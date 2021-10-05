@@ -31,7 +31,7 @@ VIEW_SCALE = 0.8
 SOURCE_COLORS = ['black', 'white']
 
 # Fun Fact: I actually set this as my wallpaper because of how cool it looked ^.^
-SAVE_IMAGE = False
+SAVE_IMAGE = True
 SAVE_NAME = "Pingle"
 
 ####################################################################################################
