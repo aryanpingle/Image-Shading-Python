@@ -36,9 +36,34 @@ Let's try this with a different source colors - [`black`, `purple`, `yellow`, `w
 :----:|:------:
 Original Image|After Shading
 
+Let me remind you - I only changed the source colors, NOTHING ELSE. That's the power of interpolation and shading.
+
+What? You still aren't impressed? I still have one trick up my sleeve.
+
+Interpolation won't just shade everything with a different color - it can COMPLETELY CHANGE the image. Here's what happens with `SOURCE_COLORS` = [`red / orange`, `white`]:
+
+[![NASA (Original)][7]][7]|[![NASA (After Shading)][8]][8]
+:----:|:------:
+Original Image|After Shading
+
+BAM! How cool is that? Since grey and black are pretty similar, the interpolation replaced both of them with orange-red, giving us that **sexy** background look. This result was so surprisingly impressive, that I actually used this as my desktop background XD
+
+# But Aryan, I don't know how to start?
+
+Don't worry my child, I have made everything clear in the source code. Read the documentation inside main.py, and you should be ready to go. Yes, it's that simple.
+
+**Potential Applications**:
+
+ - [x] Adding subtle effects to a logo or design
+ - [x] Making images take a theme color, like with my NASA example
+ - [ ] Getting you laid
+ - [x] Potentially bypassing copyright infringement, as you can completely change how an image looks, while keeping the content same
+
   [1]: Images/Spider-Man.jpg
   [2]: Generated/Spider-Man.png
   [3]: Images/Pingle.jpg
   [4]: Generated/Pingle.png
   [5]: Images/Dr.%20Stone.jpg
   [6]: Generated/Purple%20Stone.png
+  [7]: Images/NASA.jpg
+  [8]: Generated/NASA.png
