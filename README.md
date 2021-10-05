@@ -22,7 +22,23 @@ Congratulations, you just made a black-and-white effect!
 :----:|:------:
 Original Image|After Black 'N White Shading
 
+# ... what if we went further?
+
+But that's just two colors - black and white. What if we added a little grey in between? How could we achieve that?
+
+That's where interpolation is great - it allows us to mix black and white to form [`black`, `GREY`, `white`] after just 1 interpolation. Similarly, this becomes [`black`, `DARK-GREY`, `grey`, `LIGHT-GREY`, `white`] after 2 interpolations. I'm sure you can see where this is headed. You can keep interpolating, and the result will consist of multiple shades of `SOURCE_COLORS`.
+
+## The best part? All you have to do is tell the program how many times the colors should be mixed!
+
+Let's try this with a different source colors - [`black`, `purple`, `yellow`, `white`]:
+
+[![Dr. Stone (Original)][5]][5]|[![Dr. Stone (After Shading)][6]][6]
+:----:|:------:
+Original Image|After Shading
+
   [1]: Images/Spider-Man.jpg
   [2]: Generated/Spider-Man.png
   [3]: Images/Pingle.jpg
   [4]: Generated/Pingle.png
+  [4]: Images/Dr.%20Stone.jpg
+  [4]: Generated/Purple%20Stone.png

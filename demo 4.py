@@ -25,7 +25,7 @@
 
 IMAGE_PATH = "Images/Pingle.jpg"
 # INTERPOLATION_COUNT -> By keeping the interpolations to just 2, the number of colors that are present in the final image are just 7 shades of grey. So it looks washed-out, which is a nice and unexpected effect!
-INTERPOLATION_COUNT = 2
+INTERPOLATION_COUNT = 0
 VIEW_SCALE = 0.8
 # SOURCE_COLORS -> Clean and simple; If you put just 'black' and 'white' in SOURCE_COLORS, you get a greyscaled image. BUT! Because INTERPOLATION_COUNT is just 2, it gives the result a grainy, water-color effect!
 SOURCE_COLORS = ['black', 'white']
