@@ -40,5 +40,5 @@ Original Image|After Shading
   [2]: Generated/Spider-Man.png
   [3]: Images/Pingle.jpg
   [4]: Generated/Pingle.png
-  [4]: Images/Dr.%20Stone.jpg
-  [4]: Generated/Purple%20Stone.png
+  [5]: Images/Dr.%20Stone.jpg
+  [6]: Generated/Purple%20Stone.png
