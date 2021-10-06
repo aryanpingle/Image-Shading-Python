@@ -46,7 +46,7 @@ Interpolation won't just shade everything with a different color - it can COMPLE
 :----:|:------:
 Original Image|After Shading
 
-BAM! How cool is that? Since grey and black are pretty similar, the interpolation replaced both of them with orange-red, giving us that **sexy** background look. This result was so surprisingly impressive, that I actually used this as my desktop background XD
+BAM! How cool is that? Since black and the blue NASA circle are pretty similar in darkness, the interpolation replaced both of them with orange-red, giving us that **sexy** background look. This result was so surprisingly impressive, that I actually used this as my desktop background XD
 
 # But Aryan, I don't know how to start?
 
