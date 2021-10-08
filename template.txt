@@ -8,7 +8,7 @@ VIEW_SCALE = 0.4
 SOURCE_COLORS = []
 
 SAVE_IMAGE = False
-SAVE_NAME = "Purple Stone"
+SAVE_NAME = ""
 
 ####################################################################################################
 ##                                    WARNING: Nerdy Code Stuff                                   ##

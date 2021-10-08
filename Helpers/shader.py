@@ -37,22 +37,36 @@ def get_color_towards(color1, color2, fraction):
     """Returns a color which is fraction of the way from color1 to color2"""
     return [int(color1[i]*(1-fraction)+color2[i]*(fraction)) for i in range(4)]
 
-def interpolate(standards: list, INTERPOLATION_COUNT: int):
-    for _ in range(INTERPOLATION_COUNT):
-        for i in range(len(standards) - 1):
-            standards.insert(i*2+1, get_color_towards(standards[i*2], standards[i*2+1], 0.5))
+def interpolate_optimized(standards: list, INTERPOLATION_COUNT: int, twos: list):
+    if INTERPOLATION_COUNT == 0 or len(standards) == 1:
+        return standards
+    newlength = 1 + (len(standards)-1)*twos[INTERPOLATION_COUNT]
+    new_standards = [0]*newlength
+    # Init base
+    for i in range(len(standards)):
+        new_standards[i * (twos[INTERPOLATION_COUNT])] = standards[i]
+    # Start the interpolations
+    for interpolation_level in range(1, INTERPOLATION_COUNT+1):
+        for index in range((len(standards)-1)*(twos[interpolation_level-1])):
+            index = index*2 + 1
+            final_index = index * (twos[INTERPOLATION_COUNT - interpolation_level])
+            limit = twos[INTERPOLATION_COUNT - interpolation_level]
+            new_standards[final_index] = get_color_towards(new_standards[final_index-limit], new_standards[final_index+limit], 0.5)
+    return new_standards
 
 def shade_image(image_path: str, INTERPOLATION_COUNT: int, SOURCE_COLORS: list, VIEW_SCALE: float = 1):
     img = Image.open(image_path).convert("RGBA")
     WIDTH, HEIGHT = int(img.width * VIEW_SCALE), int(img.height * VIEW_SCALE)
-    img = img.resize((WIDTH, HEIGHT))
+    if VIEW_SCALE != 1:
+        img = img.resize((WIDTH, HEIGHT))
     data = img.getdata()
 
     INTERPOLATION_TYPE = 1 if any("/" in i for i in SOURCE_COLORS) else 0
+    twos = [2**i for i in range(20)]
 
     # Perform interpolation now if it's a normal type lerping
     if INTERPOLATION_TYPE == 0:
-        interpolate(SOURCE_COLORS, INTERPOLATION_COUNT)
+        SOURCE_COLORS = interpolate_optimized(SOURCE_COLORS, INTERPOLATION_COUNT, twos)
 
     CACHED_STANDARDS = [0]*WIDTH
 
@@ -69,7 +83,7 @@ def shade_image(image_path: str, INTERPOLATION_COUNT: int, SOURCE_COLORS: list, 
             STANDARDS = CACHED_STANDARDS[x]
         else:
             STANDARDS = list(map(lambda x: x if (type(x) == list) else get_color_towards(*[RGBA_NAMES[i] for i in re.split(r'\s+/\s+', x)], fr), SOURCE_COLORS))
-            interpolate(STANDARDS, INTERPOLATION_COUNT)
+            STANDARDS = interpolate_optimized(STANDARDS, INTERPOLATION_COUNT, twos)
             CACHED_STANDARDS[x] = STANDARDS
 
         color = STANDARDS[min(len(STANDARDS)-1, max(int(greyscale * len(STANDARDS) / 255), 0))]
